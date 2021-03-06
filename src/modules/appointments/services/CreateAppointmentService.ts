@@ -1,4 +1,4 @@
-/* eslint-disable camelcase */
+import 'reflect-metadata';
 import { startOfHour } from 'date-fns';
 import { inject, injectable } from 'tsyringe';
 
@@ -8,6 +8,7 @@ import Appointment from '../infra/typeorm/entities/Appointment';
 import AppError from '../../../shared/errors/AppError';
 
 interface IRequest {
+  // eslint-disable-next-line camelcase
   provider_id: string;
   date: Date;
 }
@@ -19,6 +20,7 @@ class CreateAppointmentService {
     private appointmentsRepository: IAppointmentsRepository,
   ) {}
 
+  // eslint-disable-next-line camelcase
   public async execute({ date, provider_id }: IRequest): Promise<Appointment> {
     const appointmentDate = startOfHour(date);
 
