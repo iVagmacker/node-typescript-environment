@@ -1,27 +1,24 @@
 import {
   Entity,
-  Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  Column,
+  Generated,
 } from 'typeorm';
 
-@Entity('users')
-class User {
+@Entity('users_tokens')
+class UserToken {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
-  name: string;
+  @Generated('uuid')
+  token: string;
 
   @Column()
-  email: string;
-
-  @Column()
-  password?: string;
-
-  @Column()
-  avatar: string;
+  // eslint-disable-next-line camelcase
+  user_id: string;
 
   @CreateDateColumn()
   // eslint-disable-next-line camelcase
@@ -32,4 +29,4 @@ class User {
   updated_at: Date;
 }
 
-export default User;
+export default UserToken;
